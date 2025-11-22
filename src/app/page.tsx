@@ -1,5 +1,9 @@
-// src/app/page.tsx
-import { HomeView } from "@/views/home"; // Importamos desde nuestra arquitectura limpia
+import HomeView from "@/views/home/HomeView";
+
+export const metadata = {
+  title: "Inicio - InsightFlow",
+  description: "Plataforma de gestión documental inteligente",
+};
 
 export default function HomePage() {
   return <HomeView />;

@@ -14,7 +14,7 @@ export default function WorkspaceView() {
     useWorkspaceDocuments(DEMO_WORKSPACE_ID);
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
+    <div className="p-8 w-full">
       <header className="mb-8 flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold text-gray-800">Mis Documentos</h1>
