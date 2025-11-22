@@ -1,0 +1,40 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 1. Instalar pnpm (tu gestor de paquetes moderno)
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      # 2. Configurar Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      # 3. Instalar dependencias
+      - name: Install Dependencies
+        run: pnpm install
+
+      # 4. Construir el sitio (Genera la carpeta 'out')
+      - name: Build
+        run: pnpm build
+
+      # 5. Subir a Firebase (Usando la llave secreta)
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          channelId: live
+          projectId: insightflow-frontend-ucn # <--- CONFIRMA QUE ESTE ID SEA EL TUYO DE FIREBASE
