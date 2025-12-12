@@ -1,7 +1,7 @@
 import { Workspace } from "@/types/workspaces";
 
 // URL Base del Backend (Render o Localhost)
-const BASE_URL = process.env.NEXT_PUBLIC_WORKSPACE_API_BASE_URL || "http://localhost:8080/api/workspaces";
+const BASE_URL = process.env.NEXT_PUBLIC_WORKSPACE_API_BASE_URL;
 
 export const workspacesService = {
   // 1. Obtener Workspaces por Usuario
