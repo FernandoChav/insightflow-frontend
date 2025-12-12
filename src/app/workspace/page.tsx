@@ -1,5 +1,9 @@
-import WorkspaceView from "@/views/workspace/WorkspaceView";
+import WorkspacesView from "@/views/workspace/WorkspacesView";
+
+export const metadata = {
+  title: "Mis Espacios - InsightFlow",
+};
 
 export default function WorkspacePage() {
-  return <WorkspaceView />;
+  return <WorkspacesView />;
 }
