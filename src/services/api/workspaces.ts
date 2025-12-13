@@ -17,7 +17,7 @@ export const workspacesService = {
     description: string;
     theme: string;
     userId: string;
-    iconFile: File; 
+    iconFile: File;
   }): Promise<Workspace> => {
     const formData = new FormData();
     formData.append("Name", data.name);
@@ -26,7 +26,7 @@ export const workspacesService = {
     formData.append("UserId", data.userId);
     formData.append("Icon", data.iconFile); // Debe coincidir con 'IFormFile Icon' en tu DTO C#
 
-    const res = await fetch(BASE_URL, {
+    const res = await fetch(`${BASE_URL}`, {
       method: "POST",
       body: formData, // El navegador pone el Content-Type multipart/form-data automáticamente
     });
