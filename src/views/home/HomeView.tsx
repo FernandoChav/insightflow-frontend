@@ -8,7 +8,7 @@ export default function HomeView() {
   const [form, setForm] = useState({ username: "", password: "" });
   const [showLogin, setShowLogin] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await login(form.username, form.password);
   };
