@@ -39,6 +39,16 @@ export const apiClient = {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
-    return handleResponse<T>(res);
+    if (!res.ok) {
+      const error = await res.json().catch(() => ({}));
+      throw new Error(
+        error.message || `Error ${res.status}: ${res.statusText}`
+      );
+    }
+
+    if (res.status === 204) {
+      return null as T;
+    }
+    return res.json();
   },
 };
