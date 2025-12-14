@@ -2,12 +2,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { useWorkspaces } from "./hooks/useWorkspaces"; // Asegúrate de haber creado este hook (paso 4)
+import { useWorkspaces } from "./hooks/useWorkspaces";
 import { Modal } from "@/components/ui/Modal";
+import { useAuthContext } from "@/context/AuthContext";
 
 export default function WorkspacesView() {
-  // Lógica del Hook que conecta a tu .NET
-  const { workspaces, loading, error, createWorkspace, deleteWorkspace, currentUserId } = useWorkspaces();
+  const { user } = useAuthContext();
+  const { workspaces, loading, error, createWorkspace, deleteWorkspace } = useWorkspaces();
 
   // Estados Modal Crear
   const [isCreateModalOpen, setCreateModalOpen] = useState(false);
@@ -44,9 +45,11 @@ export default function WorkspacesView() {
       <header className="mb-8 flex justify-between items-end border-b border-gray-100 pb-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Mis Espacios de Trabajo</h1>
-          <p className="text-sm text-gray-500 mt-1">
-            Usuario: {currentUserId}
-          </p>
+          {user && (
+            <p className="text-sm text-gray-500 mt-1">
+              Usuario: <span className="font-semibold">{user.username}</span> <span className="bg-gray-200 px-2 py-1 rounded font-mono ml-2">ID: {user.id}</span>
+            </p>
+          )}
         </div>
         <button
           onClick={() => setCreateModalOpen(true)}
@@ -96,7 +99,7 @@ export default function WorkspacesView() {
                         {ws.members ? ws.members.length : 1} Miembro(s)
                     </span>
                     {/* Botón Eliminar (Solo Owner) */}
-                    {ws.ownerId === currentUserId && (
+                    {user && ws.ownerId === user.id && (
                         <button 
                             onClick={(e) => { e.stopPropagation(); setWsToDelete(ws.id); }}
                             className="text-gray-400 hover:text-red-500 transition-colors"
