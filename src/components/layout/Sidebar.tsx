@@ -15,6 +15,7 @@ export default function Sidebar() {
     { name: "Documentos", href: "/documents", icon: "📄" }, // Placeholder visual
     { name: "Favoritos", href: "/favorites", icon: "⭐" }, // Placeholder visual
     { name: "Configuración", href: "/settings", icon: "⚙️" }, // Placeholder visual
+    { name: "Usuarios", href: "/users", icon: "👥" }, // Placeholder visual
   ];
 
   return (
