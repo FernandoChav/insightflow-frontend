@@ -37,6 +37,8 @@ src/
 └── views/               # Módulos funcionales (Vistas completas y su lógica)
     ├── workspace/       # Lógica y UI del listado de documentos
     └── document/        # Lógica y UI del editor de documentos
+````
+
 ### Características Principales
 1.  **Block-Based Editor:** Sistema de edición de contenido dinámico que soporta diferentes tipos de bloques (H1, H2, Párrafos, Checklists), similar a herramientas como Notion.
 2.  **Optimistic UI:** La interfaz actualiza el estado localmente de inmediato (antes de confirmar con el servidor) para ofrecer una sensación de inmediatez al usuario.
@@ -54,12 +56,15 @@ Sigue estos pasos para ejecutar el proyecto en tu entorno de desarrollo:
 * **pnpm** instalado (recomendado) o npm/yarn.
 
 ### 2. Instalación
-```bash
 # Clonar el repositorio
-git clone <URL_DEL_REPO>
+```
+git clone https://github.com/FernandoChav/insightflow-frontend.git
+```
 
 # Instalar dependencias
+```
 pnpm install
+```
 
 ### 3. Variables de Entorno
 Crea un archivo `.env.local` en la raíz del proyecto para conectar con tu Backend.
@@ -74,22 +79,12 @@ NEXT_PUBLIC_API_DOCUMENTS_URL=http://localhost:8080
 
 # Opción B: Si quieres conectar tu local directamente al backend de Render (Nube)
 NEXT_PUBLIC_API_DOCUMENTS_URL=https://insightflow-documents.onrender.com
-````
 
-### 3. Variables de Entorno
+# URL del Microservicio de Workspaces
+NEXT_PUBLIC_WORKSPACE_API_BASE_URL="https://insightflow-workspace-service-fh1q.onrender.com/api/workspaces"
 
-Crea un archivo `.env.local` en la raíz del proyecto para conectar con tu Backend.
-
-**Importante:** GitHub Actions inyecta estas variables automáticamente en producción, pero en local debes definirlas manualmente para que la aplicación sepa a dónde enviar las peticiones.
-
-```env
-# URL del Microservicio de Documentos (Backend Local o Remoto)
-
-# Opción A: Si estás corriendo el backend en Docker localmente
-NEXT_PUBLIC_API_DOCUMENTS_URL=http://localhost:8080
-
-# Opción B: Si quieres conectar tu local directamente al backend de Render (Nube)
-# NEXT_PUBLIC_API_DOCUMENTS_URL=[https://insightflow-documents-xxxx.onrender.com](https://insightflow-documents-xxxx.onrender.com)
+# URL del Microservicio de Usuarios
+NEXT_PUBLIC_USERS_API_BASE_URL=https://insightflow-users-service-latest.onrender.com
 ```
 
 ### 4. Ejecutar en Desarrollo
@@ -307,8 +302,10 @@ Este frontend consume tres microservicios backend independientes desarrollados p
 
 ---
 
-## �👤 Autors
+## �👤 Autores
 
 **Autores:** - Fernando Chávez Briceño Rut 21.180.530-7, - Daniel Tomigo Contreras - 21.564.036-1 , - Nicolas Diaz Juica - 20949349-7
+
 **Asignatura:** Taller de Arquitectura de Software  
+
 **Universidad:** Universidad Católica del Norte
